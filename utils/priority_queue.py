@@ -4,6 +4,9 @@ class PriorityQueue:
     def __init__(self):
         self.elements = []
 
+    def __contains__(self, item):
+        return item in self.elements
+
     def empty(self):
         return len(self.elements) == 0
 

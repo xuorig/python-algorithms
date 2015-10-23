@@ -50,7 +50,7 @@ class GraphAlgorithms(object):
     def a_star(graph, start, goal):
 
         def heuristic(start, goal):
-            return 1
+            return abs(start.x - goal.x) + abs(start.y - goal.y)
 
         def reconstruct_path(came_from, goal):
             # do it
@@ -86,13 +86,6 @@ class GraphAlgorithms(object):
                     f_score[neighbor] = g_score[neighbor] + heuristic(neighbor, goal)
                     open_queue.put(f_score[neighbor], neighbor)
         return None
-
-
-
-
-
-
-
 
 
     @staticmethod
