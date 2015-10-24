@@ -11,12 +11,17 @@ class BinaryTree(object):
     def __init__(self, root = None):
         self.root = root
 
+    # Wrapper for the recursive function _add
     def add(self, val):
         if self.root == None:
             self.root = BinaryTree.Node(val)
         else:
             self._add(self.root, val)
 
+    # Insert a val in the tree starting at a certain node
+    # Traverse the tree until we find an empty spot,
+    # going right when the val is greater than the node's
+    # val and left in the other case
     def _add(self, node, val):
         if val < node.data:
             if node.left == None:
@@ -29,12 +34,16 @@ class BinaryTree(object):
             else:
                 return self._add(node.right, val)
 
-    def findRecursive(self, val):
+    # Wrapper for the recursive function _find
+    def find(self, val):
         if self.root == None:
             return None
         else:
             return self._find(self.root, val)
 
+    # Find a val in the tree starting at a certain node
+    # going right when the val is greater than the node's
+    # val and left in the other case
     def _find(self, node, val):
         if val == node.data:
             return node
@@ -46,6 +55,9 @@ class BinaryTree(object):
     def visit(self, node):
         print node
 
+    # Preorder tree traversal starts by visiting the root of
+    # the tree, then visits every left children and then visits
+    # all the right children
     def preOrder(self, node):
         if node == None:
             return
@@ -53,6 +65,9 @@ class BinaryTree(object):
         self.preOrder(node.left)
         self.preOrder(node.right)
 
+    # Inorder tree traversal starts by visiting every left child of
+    # the tree, then visits the root and then visits
+    # all the right children
     def inOrder(self, node):
         if node == None:
             return
@@ -60,6 +75,9 @@ class BinaryTree(object):
         self.visit(node)
         self.inOrder(node.right)
 
+    # Postorder tree traversal starts by visiting every left child of
+    # the tree, then visits every right child and finishes with
+    # the root.
     def postOrder(self, node):
         if node == None:
             return
