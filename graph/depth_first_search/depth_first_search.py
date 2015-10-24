@@ -1,3 +1,12 @@
+# https://en.wikipedia.org/wiki/Depth-first_search
+graph = {'A': set(['B', 'C', 'E']),
+         'B': set(['A', 'D', 'F']),
+         'C': set(['A', 'G']),
+         'D': set(['B']),
+         'E': set(['A', 'F']),
+         'F': set(['B', 'E']),
+         'G': set(['C'])}
+
 def dfs(graph, start):
     marked = set()
     stack = [start]
@@ -8,3 +17,5 @@ def dfs(graph, start):
             for v in graph[top]:
                 stack.append(v)
     return marked
+
+print dfs(graph, 'A')
