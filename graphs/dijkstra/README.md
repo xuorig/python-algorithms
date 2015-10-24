@@ -12,3 +12,11 @@ For each of the node's neighbors we calculate a new distance value for the neigh
 If that distance is lesser than what we already have for the neighbor, update the distance map and set the predecessor of the neighbor to the current node.
 
 When we are out of nodes in the PriorityQueue or if we found the target, we return the prev and dist maps or we build the path from target to the source node using the prev map.
+
+##### Compared to other search algorithms
+
+  - Best-First Search is an informed algorithm (Uses an heuristic), which expands the most promising node first.
+
+  - Dijkstra is uninformed algorithm - it should be used when you have no knowledge on the graph, and cannot estimate the distance from each node to the target.
+
+  - A* (which is a s best-first search) turns into Dijkstra's algorithm when you use heuristic function h(v)  = 0 for each v.
