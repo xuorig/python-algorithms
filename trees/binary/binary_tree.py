@@ -81,8 +81,8 @@ class BinaryTree(object):
     def postOrder(self, node):
         if node == None:
             return
-        self.inOrder(node.left)
-        self.inOrder(node.right)
+        self.postOrder(node.left)
+        self.postOrder(node.right)
         self.visit(node)
 
 tree = BinaryTree()
@@ -91,15 +91,21 @@ tree.add(15)
 tree.add(25)
 tree.add(10)
 tree.add(17)
+tree.add(18)
 tree.add(22)
 tree.add(27)
+tree.add(29)
 #
 #        20
 #     /      \
 #    15       25
 #    / \    /    \
 # 10    17  22    27
-
+#        \        \
+#        18       29
+# 20 15 10 17 18 25 22 27 29
+# 10 15 17 18 20 22 25 27 29
+# 10 18 15 22 29 27 25 20
 print "preorder"
 
 tree.preOrder(tree.root)
