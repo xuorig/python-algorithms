@@ -85,11 +85,47 @@ class BinaryTree(object):
         self.postOrder(node.right)
         self.visit(node)
 
+    # given a sum val, find two nodes in the tree whose sum is val.
+    def hasTwoNodesOfSum(self, val):
+        # Build two stacks of next nodes and prev nodes
+        nextNodes = []
+        prevNodes = []
+        node = self.root
+        while node:
+            nextNodes.append(node)
+            node = node.left
+        node = self.root
+        while node:
+            prevNodes.append(node)
+            node = node.right
+        smallest = nextNodes.pop()
+        largest = prevNodes.pop()
+        while prevNodes and nextNodes:
+            total = smallest.data + largest.dat
+            if total == val:
+                # Found i
+                return (smallest, largest)
+            elif total > val:
+                largest = prevNodes.pop()
+                leftChild = largest.left
+                while leftChild:
+                    prevNodes.append(leftChild)
+                    leftChild = leftChild.right
+
+                    prevNodes.append(largest.left)
+            elif total < val:
+                smallest = nextNodes.pop()
+
+
+
+
+
+
 tree = BinaryTree()
 tree.add(20)
 tree.add(15)
 tree.add(25)
-tree.add(10)
+tree.add(10)  45
 tree.add(17)
 tree.add(18)
 tree.add(22)
@@ -107,6 +143,8 @@ tree.add(29)
 # 10 15 17 18 20 22 25 27 29
 # 10 18 15 22 29 27 25 20
 print "preorder"
+
+25
 
 tree.preOrder(tree.root)
 
